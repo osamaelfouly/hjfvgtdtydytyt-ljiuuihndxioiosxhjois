@@ -22,26 +22,10 @@ const gif = require("gif-search");
 
 const client = new Discord.Client({disableEveryone: true});
 
-const prefix = "!";
+const prefix = "4";
 
 var servers = {};
-function play(connection, message, args) {
-  var server = servers[message.guild.id];
-  server.dispatcher = connection.playStream(YTDL(args[0]), {filter: "audioonly"});
-  server.queue.shift();
-  server.dispatcher.on("end", function() {
-    if (server.queue[0]) play(connection, message);
-    else connection.disconnect();
-  });
-}
 
-
-client.on('message', message =>{
-  if(message.content.startsWith('join')){
-    const voiceChannel = message.member.voiceChannel
-    voiceChannel.join();
-    message.channel.send("تم الأتصال بالروم الصوتي")
-}})
 /////////////////////////
 ////////////////////////
 
@@ -400,7 +384,7 @@ client.on('message', message => {
 
 
 client.on('message', msg => {
- if (msg.content === "?help") {
+ if (msg.content === "4help") {
 msg.channel.send('**Check your `Privat` To see the `commands` 🎶**');
 msg.react('💌')
  msg.author.sendMessage(`
@@ -447,7 +431,7 @@ ${prefix}\`\ setname \`\ - change the bot name
 
 client.on('message', msg => {
 
-    if (msg.content == '?join') {
+    if (msg.content == '4join') {
         if (msg.member.voiceChannel) {
 
      if (msg.member.voiceChannel.joinable) {
@@ -457,7 +441,7 @@ client.on('message', msg => {
 }
 })
 client.on('ready', () => {
-    client.channels.get("486311876356210689").join();
+    client.channels.get("493480305810866176").join();
 });
 
   
